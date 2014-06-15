@@ -48,7 +48,6 @@ median(dayact2$steps)
 ```r
 dayact4 <- melt(act[ , c(1,3)], id.vars = "interval", na.rm = TRUE)
 dayact5 <- dcast(dayact4, interval ~ variable, fun.aggregate = mean)
-
 plot(c(1:288), dayact5$steps, type = "p")
 ```
 
@@ -76,13 +75,10 @@ print(paste("number of NAs:", numNA))
 
 ```r
 act1 <- act
-
-print("The strategy for missing values is to replace them with the mean for that specific 5-minute interval")
 ```
 
-```
-## [1] "The strategy for missing values is to replace them with the mean for that specific 5-minute interval"
-```
+### The strategy for missing values is to replace them with the mean for that specific 5-minute interval
+
 
 ```r
 for (i in (1 : nrow(act))) {
@@ -99,7 +95,7 @@ qplot(steps, data = dayact7)
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
 ```r
 mean(dayact7$steps)
@@ -117,22 +113,7 @@ median(dayact7$steps)
 ## [1] 10766
 ```
 
-```r
-print("The resutls are different")
-```
-
-```
-## [1] "The resutls are different"
-```
-
-```r
-print("as the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766")
-```
-
-```
-## [1] "as the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766"
-```
-
+### The resutls are different. As the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

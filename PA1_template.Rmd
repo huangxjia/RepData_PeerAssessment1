@@ -28,7 +28,6 @@ median(dayact2$steps)
 
 dayact4 <- melt(act[ , c(1,3)], id.vars = "interval", na.rm = TRUE)
 dayact5 <- dcast(dayact4, interval ~ variable, fun.aggregate = mean)
-
 plot(c(1:288), dayact5$steps, type = "p")
 print(dayact5[dayact5$steps == max(dayact5$steps), "interval"])
 
@@ -40,9 +39,11 @@ print(dayact5[dayact5$steps == max(dayact5$steps), "interval"])
 numNA <- nrow(act)- nrow(dayact)
 print(paste("number of NAs:", numNA))
 act1 <- act
+```
 
-print("The strategy for missing values is to replace them with the mean for that specific 5-minute interval")
+### The strategy for missing values is to replace them with the mean for that specific 5-minute interval
 
+```{r, echo=TRUE}
 for (i in (1 : nrow(act))) {
   if (is.na(act[i, "steps"]))
     act1[i, "steps"] <- dayact5[dayact5$interval == act1[i, "interval"], "steps"]
@@ -53,12 +54,9 @@ dayact7 <- dcast(dayact6, date ~ variable, fun.aggregate = sum)
 qplot(steps, data = dayact7)
 mean(dayact7$steps)
 median(dayact7$steps)
-
-print("The resutls are different")
-print("as the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766")
-
 ```
 
+### The resutls are different. As the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ```{r, echo=TRUE}
@@ -67,7 +65,7 @@ act1$week <- c()
 for (i in 1:nrow(act1)) {
   if (act1[i, "day"] %in% c("星期日","星期六"))
     act1[i, "week"] <- "weekend"
-  else
+  else 
     act1[i, "week"] <- "weekday"
 }
 
