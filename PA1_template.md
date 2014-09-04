@@ -1,5 +1,8 @@
 # Reproducible Research: Peer Assessment 1
+<<<<<<< HEAD
 ============================
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 
 
 ## Loading and preprocessing the data
@@ -29,6 +32,7 @@ qplot(steps, data = dayact2)
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 ```r
+<<<<<<< HEAD
 print("mean:")
 ```
 
@@ -37,6 +41,8 @@ print("mean:")
 ```
 
 ```r
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 mean(dayact2$steps)
 ```
 
@@ -45,6 +51,7 @@ mean(dayact2$steps)
 ```
 
 ```r
+<<<<<<< HEAD
 print("median")
 ```
 
@@ -53,6 +60,8 @@ print("median")
 ```
 
 ```r
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 median(dayact2$steps)
 ```
 
@@ -65,13 +74,17 @@ median(dayact2$steps)
 ```r
 dayact4 <- melt(act[ , c(1,3)], id.vars = "interval", na.rm = TRUE)
 dayact5 <- dcast(dayact4, interval ~ variable, fun.aggregate = mean)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 plot(c(1:288), dayact5$steps, type = "p")
 ```
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
 
 ```r
+<<<<<<< HEAD
 print("interval that contains most average steps:")
 ```
 
@@ -80,6 +93,8 @@ print("interval that contains most average steps:")
 ```
 
 ```r
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 print(dayact5[dayact5$steps == max(dayact5$steps), "interval"])
 ```
 
@@ -101,6 +116,7 @@ print(paste("number of NAs:", numNA))
 
 ```r
 act1 <- act
+<<<<<<< HEAD
 
 print("The strategy for missing values is to replace them with the mean for that specific 5-minute interval")
 ```
@@ -108,6 +124,12 @@ print("The strategy for missing values is to replace them with the mean for that
 ```
 ## [1] "The strategy for missing values is to replace them with the mean for that specific 5-minute interval"
 ```
+=======
+```
+
+### The strategy for missing values is to replace them with the mean for that specific 5-minute interval
+
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 
 ```r
 for (i in (1 : nrow(act))) {
@@ -124,6 +146,7 @@ qplot(steps, data = dayact7)
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
+<<<<<<< HEAD
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
 ```r
@@ -133,6 +156,9 @@ print("mean:")
 ```
 ## [1] "mean:"
 ```
+=======
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 
 ```r
 mean(dayact7$steps)
@@ -143,6 +169,7 @@ mean(dayact7$steps)
 ```
 
 ```r
+<<<<<<< HEAD
 print("median:")
 ```
 
@@ -151,6 +178,8 @@ print("median:")
 ```
 
 ```r
+=======
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 median(dayact7$steps)
 ```
 
@@ -158,6 +187,7 @@ median(dayact7$steps)
 ## [1] 10766
 ```
 
+<<<<<<< HEAD
 ```r
 print("The resutls are different")
 ```
@@ -191,4 +221,10 @@ xyplot(steps ~ interval | week, data = act1, layout = c(1, 2), type = "l")
 ```
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+=======
+### The resutls are different. As the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766
+
+## Are there differences in activity patterns between weekdays and weekends?
+
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 

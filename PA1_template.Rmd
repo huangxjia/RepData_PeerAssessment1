@@ -19,11 +19,16 @@ act <- read.csv("activity.csv")
 dayact <- melt(act[ , c(1, 2)], id.vars = "date", na.rm = TRUE)
 dayact2 <- dcast(dayact, date ~ variable, fun.aggregate = sum)
 qplot(steps, data = dayact2)
+<<<<<<< HEAD
 print("mean:")
 mean(dayact2$steps)
 print("median")
 median(dayact2$steps)
 
+=======
+mean(dayact2$steps)
+median(dayact2$steps)
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 ```
 
 ## What is the average daily activity pattern?
@@ -31,9 +36,13 @@ median(dayact2$steps)
 
 dayact4 <- melt(act[ , c(1,3)], id.vars = "interval", na.rm = TRUE)
 dayact5 <- dcast(dayact4, interval ~ variable, fun.aggregate = mean)
+<<<<<<< HEAD
 
 plot(c(1:288), dayact5$steps, type = "p")
 print("interval that contains most average steps:")
+=======
+plot(c(1:288), dayact5$steps, type = "p")
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 print(dayact5[dayact5$steps == max(dayact5$steps), "interval"])
 
 ```
@@ -44,9 +53,17 @@ print(dayact5[dayact5$steps == max(dayact5$steps), "interval"])
 numNA <- nrow(act)- nrow(dayact)
 print(paste("number of NAs:", numNA))
 act1 <- act
+<<<<<<< HEAD
 
 print("The strategy for missing values is to replace them with the mean for that specific 5-minute interval")
 
+=======
+```
+
+### The strategy for missing values is to replace them with the mean for that specific 5-minute interval
+
+```{r, echo=TRUE}
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 for (i in (1 : nrow(act))) {
   if (is.na(act[i, "steps"]))
     act1[i, "steps"] <- dayact5[dayact5$interval == act1[i, "interval"], "steps"]
@@ -55,6 +72,7 @@ for (i in (1 : nrow(act))) {
 dayact6 <- melt(act1[ , c(1, 2)], id.vars = "date", na.rm = TRUE)
 dayact7 <- dcast(dayact6, date ~ variable, fun.aggregate = sum)
 qplot(steps, data = dayact7)
+<<<<<<< HEAD
 print("mean:")
 mean(dayact7$steps)
 print("median:")
@@ -65,6 +83,13 @@ print("as the mean values replace the NAs, the mean of the devised dataset stay 
 
 ```
 
+=======
+mean(dayact7$steps)
+median(dayact7$steps)
+```
+
+### The resutls are different. As the mean values replace the NAs, the mean of the devised dataset stay unchanged, and the median changes from 10765 to 10766
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
 
 ## Are there differences in activity patterns between weekdays and weekends?
 ```{r, echo=TRUE}
@@ -73,9 +98,21 @@ act1$week <- c()
 for (i in 1:nrow(act1)) {
   if (act1[i, "day"] %in% c("星期日","星期六"))
     act1[i, "week"] <- "weekend"
+<<<<<<< HEAD
   else
+=======
+  else 
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
     act1[i, "week"] <- "weekday"
 }
 
 xyplot(steps ~ interval | week, data = act1, layout = c(1, 2), type = "l")
+<<<<<<< HEAD
 ```
+=======
+
+```
+
+
+
+>>>>>>> 4fac77377dc0ddd2d87db27271081da69a7fcd79
